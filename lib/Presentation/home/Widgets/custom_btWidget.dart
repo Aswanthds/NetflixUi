@@ -6,10 +6,14 @@ class addButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.icon,
+    required this.icoSize,
+    required this.textSize,
   });
 
   final String title;
   final IconData icon;
+  final double icoSize;
+  final double textSize;
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +21,12 @@ class addButton extends StatelessWidget {
       children: [
         Icon(
           icon,
-          size: 25,
+          size: icoSize,
           color: kbuttonwhite,
         ),
         Text(
           title,
-          style: TextStyle(color: kWhiteColor, fontSize: 15),
+          style: TextStyle(color: kWhiteColor, fontSize: textSize),
         )
       ],
     );

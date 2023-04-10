@@ -30,11 +30,15 @@ class BackgroundCardWidget extends StatelessWidget {
                 const addButton(
                   icon: Icons.add,
                   title: 'My List',
+                  icoSize: 20,
+                  textSize: 16,
                 ),
                 _homeWidget(),
                 const addButton(
                   icon: Icons.info_outline,
                   title: 'Info',
+                  icoSize: 20,
+                  textSize: 16,
                 )
               ],
             ),
