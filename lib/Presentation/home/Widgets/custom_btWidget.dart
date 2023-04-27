@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_ui/core/colors/colors.dart';
+import 'package:netflix_ui/core/colors.dart';
 
 class addButton extends StatelessWidget {
   const addButton({

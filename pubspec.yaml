@@ -29,11 +29,24 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bordered_text: ^2.0.0
+  build_runner: ^2.3.3
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  dio: ^5.1.1
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.2
+  freezed: ^2.3.2
+  freezed_annotation: ^2.2.0
+  get_it: ^7.2.0
   google_fonts: ^4.0.3
+  injectable: ^2.1.1
+  injectable_generator: ^2.1.5
+  json_annotation: 4.6.0
+  json_serializable: ^6.1.5
   video_player: ^2.6.0
+  easy_debounce : 2.0.3
+  share_plus: 6.3.2
 
 dev_dependencies:
   flutter_lints: ^2.0.0

@@ -7,7 +7,7 @@ import 'package:netflix_ui/Presentation/home/Widgets/main_title.dart';
 import 'package:netflix_ui/Presentation/home/Widgets/mian_num_title_card.dart';
 import 'package:netflix_ui/Presentation/home/Widgets/num_card.dart';
 import 'package:netflix_ui/Presentation/home/main_title_card.dart';
-import 'package:netflix_ui/core/colors/colors.dart';
+import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/constants.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);

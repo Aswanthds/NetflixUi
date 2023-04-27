@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_ui/Presentation/home/Widgets/main_card.dart';
 import 'package:netflix_ui/Presentation/home/Widgets/main_title.dart';
-import 'package:netflix_ui/core/colors/colors.dart';
+import 'package:netflix_ui/core/colors.dart';
 
 class RowHome extends StatelessWidget {
   const RowHome({
