@@ -20,30 +20,44 @@ class SearchIdleWidget extends StatelessWidget {
           child: BlocBuilder<SearchresultBloc, SearchresultState>(
             builder: (context, state) {
               if (state.isError) {
-                return Center(child: Text("Error While getting Data", style: TextStyle(fontWeight: FontWeight.bold),));
-              } else if (state.idleList.isEmpty) {
-                return Center(child: Column(
+                return Center(
+                    child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircularProgressIndicator(strokeWidth: 2,),
-                    Text("List is Empty",style: TextStyle(fontWeight: FontWeight.bold),),
-                    
+                    Icon(Icons.error_outline),
+                    Text(
+                      "Error !!! ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ));
-              } 
-              return ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (ctx, index) {
-                  final movie = state.idleList[index];
-                  return TopSearchTile(
-                    image: '$imageAppendUrl${movie.backdropPath}',
-                    title: movie.title ?? "No title",
-                  );
-                },
-                //String get posterImageUrl => '$imageAppendUrl$posterPath';
-                separatorBuilder: (ctx, index) => kHeight20,
-                itemCount: state.idleList.length,
-              );
+              } else if (state.idleList.isEmpty) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                     CircularProgressIndicator(strokeWidth: 2),
+                      Text(
+                        "List is Empty",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                );
+              } else
+                return ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (ctx, index) {
+                    final movie = state.idleList[index];
+                    return TopSearchTile(
+                      image: '$imageAppendUrl${movie.backdropPath}',
+                      title: movie.title ?? "No title",
+                    );
+                  },
+                  //String get posterImageUrl => '$imageAppendUrl$posterPath';
+                  separatorBuilder: (ctx, index) => kHeight20,
+                  itemCount: state.idleList.length,
+                );
             },
           ),
         )

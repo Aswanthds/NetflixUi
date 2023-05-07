@@ -3,9 +3,8 @@ import 'package:netflix_ui/Presentation/home/screen_home.dart';
 import 'package:netflix_ui/core/constants.dart';
 
 class MainCardHome extends StatelessWidget {
-  const MainCardHome({
-    super.key,
-  });
+  final String imgUrl;
+  const MainCardHome({super.key, required this.imgUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +15,8 @@ class MainCardHome extends StatelessWidget {
           height: 250,
           //color: Colors.red,
           decoration: BoxDecoration(
-            image: const DecorationImage(
-              image: NetworkImage(imageUrl),
+            image: DecorationImage(
+              image: NetworkImage(imgUrl),
               fit: BoxFit.cover,
             ),
             borderRadius: kRadius10,

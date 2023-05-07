@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_ui/application/fastLaugh/fast_laugh_bloc.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/Domain/Downloads/Models/downloads.dart';
@@ -32,12 +33,12 @@ class VideoListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final posterpath =
-         VideoListInheritedWidget.of(context)?.movieData.posterPath;
+    final posterpath =
+        VideoListInheritedWidget.of(context)?.movieData.posterPath;
 
     final videoUrl = dvideoUrls[index % dvideoUrls.length];
     //final imgoUrl = dimgUrls [index % dimgUrls.length];
-    
+
     return Stack(
       children: [
         //left side
@@ -66,29 +67,56 @@ class VideoListItem extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: CircleAvatar(
                         radius: 30,
-                        backgroundImage: NetworkImage('$imageAppendUrl$posterpath'),
+                        backgroundImage:
+                            NetworkImage('$imageAppendUrl$posterpath'),
                       ),
                     ),
-                    VideoActionWidget(
-                      icon: Icons.emoji_emotions,
-                      title: "LOL",
-                    ),
+                    ValueListenableBuilder(
+                        valueListenable: likedVidoesNotifier,
+                        builder:
+                            (BuildContext c, Set<int> newlikedList, Widget? _) {
+                          final _index = index;
+                          if (newlikedList.contains(_index)) {
+                            return GestureDetector(
+                              onTap: () {
+                                //BlocProvider.of<FastLaughBloc>(context).add(UnlikedVideo(id: _index));
+                                likedVidoesNotifier.value.remove(_index);
+                                likedVidoesNotifier.notifyListeners();
+                              },
+                              child: VideoActionWidget(
+                                icon: Icons.favorite,
+                                title: "Liked",
+                              ),
+                            );
+                          }
+                          return GestureDetector(
+                            onTap: () {
+                              //BlocProvider.of<FastLaughBloc>(context).add(LikedVideo(id: _index));
+                              likedVidoesNotifier.value.add(_index);
+                              likedVidoesNotifier.notifyListeners();
+                            },
+                            child: VideoActionWidget(
+                              icon: Icons.emoji_emotions,
+                              title: "LOL",
+                            ),
+                          );
+                        }),
                     VideoActionWidget(
                       icon: Icons.add,
                       title: "My List",
                     ),
-                   GestureDetector(
-                    onTap:() {
-                      final movieName = VideoListInheritedWidget.of(context)?.movieData.title;
+                    GestureDetector(
+                      onTap: () {
+                        final movieName = VideoListInheritedWidget.of(context)
+                            ?.movieData
+                            .title;
 
-                      log(movieName.toString());
-                      if (movieName != null) {
-                        Share.share('$imageAppendUrl$posterpath');
-                      }
-        
-                    },
-                      child: 
-                      VideoActionWidget(
+                        log(movieName.toString());
+                        if (movieName != null) {
+                          Share.share('$imageAppendUrl$posterpath');
+                        }
+                      },
+                      child: VideoActionWidget(
                         icon: Icons.ios_share,
                         title: "Share",
                       ),
@@ -173,6 +201,7 @@ class _FastLaughVideoPlayerState extends State<FastLaughVideoPlayer> {
             ),
     );
   }
+
   @override
   void dispose() {
     _videoPlayerontoller.dispose();

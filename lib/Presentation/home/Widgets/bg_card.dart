@@ -2,21 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:netflix_ui/Presentation/home/Widgets/custom_btWidget.dart';
 import 'package:netflix_ui/core/colors.dart';
 import 'package:netflix_ui/core/constants.dart';
+import 'package:netflix_ui/core/strings.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_ui/application/downloads/downloads_bloc.dart';
 
 class BackgroundCardWidget extends StatelessWidget {
   const BackgroundCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+   
     return Stack(
       children: [
         Container(
           width: double.infinity,
           height: 600,
           // color: Colors.blue,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(kImageHome), fit: BoxFit.fill)),
+                  image: NetworkImage(
+                      kImageHome),
+                  fit: BoxFit.fill)),
         ),
         Positioned(
           bottom: 0,

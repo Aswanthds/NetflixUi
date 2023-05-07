@@ -6,9 +6,10 @@ import 'package:netflix_ui/core/colors.dart';
 class RowHome extends StatelessWidget {
   const RowHome({
     super.key,
-    required this.divTitle,
+    required this.divTitle, required this.posterList,
   });
   final String divTitle;
+  final List<String> posterList;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,8 @@ class RowHome extends StatelessWidget {
               child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: List.generate(
-                    10,
-                    (index) => MainCardHome(),
+                    posterList.length,
+                    (index) => MainCardHome(imgUrl: posterList[index]),
                   )),
             ),
           ),

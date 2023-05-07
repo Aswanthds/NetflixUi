@@ -24,7 +24,9 @@ class SearchResultWidget extends StatelessWidget {
                 crossAxisSpacing: 5,
                 mainAxisSpacing: 8,
                 childAspectRatio: 1 / 1.4,
-                children: List.generate( state.searchResultList.length, (index) {
+                children: List.generate(
+                  state.searchResultList.length,
+                  (index) {
                     final movie = state.searchResultList[index];
                     return MainCard(
                         image: '$imageAppendUrl${movie.posterPath}');

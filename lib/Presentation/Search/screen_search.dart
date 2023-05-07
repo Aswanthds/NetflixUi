@@ -11,8 +11,6 @@ import 'package:easy_debounce/easy_debounce.dart';
 class ScreenSearch extends StatelessWidget {
   ScreenSearch({super.key});
 
-  
-
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(

@@ -20,7 +20,6 @@ class SearchResult {
 
 @JsonSerializable()
 class SearchResultData {
- 
   @JsonKey(name: 'backdrop_path')
   String? backdropPath;
 
@@ -30,10 +29,7 @@ class SearchResultData {
   @JsonKey(name: 'poster_path')
   String? posterPath;
 
-  
-
   SearchResultData({
-   
     this.backdropPath,
     this.originalTitle,
     this.posterPath,

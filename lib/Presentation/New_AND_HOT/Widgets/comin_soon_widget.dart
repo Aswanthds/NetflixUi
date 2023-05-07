@@ -3,8 +3,21 @@ import 'package:netflix_ui/Presentation/home/Widgets/custom_btWidget.dart';
 import 'package:netflix_ui/core/constants.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String descp;
+
   const ComingSoonWidget({
     super.key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieName,
+    required this.descp,
   });
 
   @override
@@ -17,14 +30,14 @@ class ComingSoonWidget extends StatelessWidget {
           height: 500,
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             Text(
-              "Apr",
+              month,
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
             Text(
-              "11",
+              day,
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             )
           ]),
@@ -40,9 +53,7 @@ class ComingSoonWidget extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     height: 200,
-                    child: Image.network(
-                        'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/ovM06PdF3M8wvKb06i4sjW3xoww.jpg',
-                        fit: BoxFit.cover),
+                    child: Image.network(posterPath, fit: BoxFit.cover),
                   ),
                   Positioned(
                     bottom: 10,
@@ -62,14 +73,21 @@ class ComingSoonWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(
-                    "AVATAR 2 ",
-                    style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: -4),
+                  Expanded(
+                    child: FittedBox(
+                      child: Text(
+                        movieName,
+                        maxLines: 1,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            //letterSpacing: -1
+                            ),
+                      ),
+                    ),
                   ),
-                  const Spacer(),
+                  //const Spacer(),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -92,7 +110,7 @@ class ComingSoonWidget extends StatelessWidget {
                   )
                 ],
               ),
-              Text("Coming on Tuesday"),
+              //Text("Coming on Tuesday"),
               Row(
                 children: [
                   Container(
@@ -113,8 +131,10 @@ class ComingSoonWidget extends StatelessWidget {
                 ],
               ),
               kHeight,
-              const Text(
-                "Avatar 2 ",
+              Text(
+                movieName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -122,7 +142,9 @@ class ComingSoonWidget extends StatelessWidget {
               ),
               kHeight,
               Text(
-                "Jake Sully and Ney'tiri have formed a family and are doing everything to stay together. However, they must leave their home and explore the regions of Pandora. When an ancient threat resurfaces, Jake must fight a difficult war against the humans.",
+                descp,
+                maxLines: 5,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.white.withOpacity(0.5),

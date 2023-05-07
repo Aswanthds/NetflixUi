@@ -3,7 +3,9 @@ import 'package:netflix_ui/Presentation/home/Widgets/main_title.dart';
 import 'package:netflix_ui/Presentation/home/Widgets/num_card.dart';
 
 class RowNumHome extends StatelessWidget {
-  const RowNumHome({super.key});
+  const RowNumHome({super.key, required this.posterList});
+
+  final List<String> posterList;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,9 @@ class RowNumHome extends StatelessWidget {
             child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: List.generate(
-                  10,
+                  posterList.length,
                   (index) => NumberCard(
-                    index: index + 1,
+                    index: index + 1, imgUrl: posterList[index],
                   ),
                 )),
           ),
