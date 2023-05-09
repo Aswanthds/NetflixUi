@@ -11,18 +11,19 @@ class BackgroundCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     return Stack(
       children: [
-        Container(
-          width: double.infinity,
-          height: 600,
-          // color: Colors.blue,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(
-                      kImageHome),
-                  fit: BoxFit.fill)),
+        BlocBuilder<DownloadsBloc, DownloadsState>(
+          builder: (context, state) {
+            return Container(
+              width: double.infinity,
+              height: 600,
+              // color: Colors.blue,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage('$imageAppendUrl${state.downloads[0].posterPath}'), fit: BoxFit.fill)),
+            );
+          },
         ),
         Positioned(
           bottom: 0,

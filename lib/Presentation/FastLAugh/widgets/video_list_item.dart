@@ -36,13 +36,14 @@ class VideoListItem extends StatelessWidget {
     final posterpath =
         VideoListInheritedWidget.of(context)?.movieData.posterPath;
 
-    final videoUrl = dvideoUrls[index % dvideoUrls.length];
-    //final imgoUrl = dimgUrls [index % dimgUrls.length];
+    //final videoUrl = dvideoUrls[index % dvideoUrls.length];
+   
 
     return Stack(
       children: [
         //left side
-        FastLaughVideoPlayer(videoUrl: videoUrl, onStateChanged: (bool) {}),
+        //FastLaughVideoPlayer(videoUrl: videoUrl, onStateChanged: (bool) {}),
+        Container(color: Colors.accents[index % Colors.accents.length],),
         Align(
           alignment: Alignment.bottomLeft,
           child: Padding(

@@ -39,6 +39,117 @@ class HotAndNewImplementation implements HotandNewService {
       final Response response = await Dio(BaseOptions()).get(
         ApiEndPoints.hotandnewtv,
       );
+      log(response.data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final result = HotandNew.fromJson(response.data);
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure());
+      }
+    } on DioError catch (f) {
+      log(f.toString());
+      return const Left(MainFailure.clientFailure());
+    } catch (e) {
+      log(e.toString());
+      return const Left(MainFailure.clientFailure());
+    }
+  }
+
+  @override
+  Future<Either<MainFailure, HotandNew>> getSouthIndianData() async {
+    try {
+      final Response response = await Dio(BaseOptions()).get(
+        ApiEndPoints.southIndian,
+      );
+      //log(response.data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final result = HotandNew.fromJson(response.data);
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure());
+      }
+    } on DioError catch (f) {
+      log(f.toString());
+      return const Left(MainFailure.clientFailure());
+    } catch (e) {
+      log(e.toString());
+      return const Left(MainFailure.clientFailure());
+    }
+  }
+
+   @override
+  Future<Either<MainFailure, HotandNew>> getPastYearData() async {
+    try {
+      final Response response = await Dio(BaseOptions()).get(
+        ApiEndPoints.pastYears,
+      );
+      //log(response.data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final result = HotandNew.fromJson(response.data);
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure());
+      }
+    } on DioError catch (f) {
+      log(f.toString());
+      return const Left(MainFailure.clientFailure());
+    } catch (e) {
+      log(e.toString());
+      return const Left(MainFailure.clientFailure());
+    }
+  }
+
+  //
+
+   @override
+  Future<Either<MainFailure, HotandNew>> getTop10Shows() async {
+    try {
+      final Response response = await Dio(BaseOptions()).get(
+        ApiEndPoints.top10shows,
+      );
+      //log(response.data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final result = HotandNew.fromJson(response.data);
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure());
+      }
+    } on DioError catch (f) {
+      log(f.toString());
+      return const Left(MainFailure.clientFailure());
+    } catch (e) {
+      log(e.toString());
+      return const Left(MainFailure.clientFailure());
+    }
+  }
+   @override
+  Future<Either<MainFailure, HotandNew>> getTrending() async {
+    try {
+      final Response response = await Dio(BaseOptions()).get(
+        ApiEndPoints.trending,
+      );
+      //log(response.data.toString());
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final result = HotandNew.fromJson(response.data);
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure());
+      }
+    } on DioError catch (f) {
+      log(f.toString());
+      return const Left(MainFailure.clientFailure());
+    } catch (e) {
+      log(e.toString());
+      return const Left(MainFailure.clientFailure());
+    }
+  }
+
+   @override
+  Future<Either<MainFailure, HotandNew>> getTensed() async {
+    try {
+      final Response response = await Dio(BaseOptions()).get(
+        ApiEndPoints.tenseDramas,
+      );
       //log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final result = HotandNew.fromJson(response.data);
@@ -55,3 +166,5 @@ class HotAndNewImplementation implements HotandNewService {
     }
   }
 }
+
+

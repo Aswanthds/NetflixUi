@@ -12,7 +12,7 @@ class RowNumHome extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        MainTitle(title: " Top 10 Tv Shoes in India Today"),
+        MainTitle(title: " Top 10 Tv Shows in India Today"),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: LimitedBox(

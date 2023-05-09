@@ -7,7 +7,7 @@ class HomeState with _$HomeState {
     required List<HotAndNewData> pastYearMovieList,
     required List<HotAndNewData> trendingMovieList,
     required List<HotAndNewData> tenseDramaMovieList,
-    required List<HotAndNewData> SouthIndianMovieList,
+    required List<HotAndNewData> southIndianMovieList,
     required List<HotAndNewData> trendingTvList,
     required bool isLoading,
     required bool isError,
@@ -17,10 +17,12 @@ class HomeState with _$HomeState {
         pastYearMovieList: [],
         trendingMovieList: [],
         tenseDramaMovieList: [],
-        SouthIndianMovieList: [],
+        southIndianMovieList: [],
         trendingTvList: [],
         isLoading: false,
         isError: false, 
         stateId: '0',
       );
+
+  
 }

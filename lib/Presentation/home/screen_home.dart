@@ -47,76 +47,63 @@ class ScreenHome extends StatelessWidget {
                 children: [
                   BlocBuilder<HomeBloc, HomeState>(
                     builder: (context, state) {
-
                       if (state.isLoading) {
-                       return  Center(child: CircularProgressIndicator());
+                        return Center(child: CircularProgressIndicator());
                       } else if (state.isError) {
                         return Center(child: Text('Error while getting Data'));
                       }
 
-
-                      final _releasePastYear = state.pastYearMovieList.map((e){
-
-                        return  "$imageAppendUrl${e.posterPath}";
-
+                      final _releasePastYear = state.pastYearMovieList.map((e) {
+                        return "$imageAppendUrl${e.posterPath}";
                       }).toList();
-                      _releasePastYear.shuffle();
+                      // _releasePastYear.shuffle();
 
-                      final _trendingMovieList = state.trendingMovieList .map((e){
-
-                        return  "$imageAppendUrl${e.posterPath}";
-
+                      final _trendingMovieList =
+                          state.trendingMovieList.map((e) {
+                        return "$imageAppendUrl${e.posterPath}";
                       }).toList();
-                      _trendingMovieList.shuffle();
+                      //_trendingMovieList.shuffle();
 
-                      final _tensed = state.tenseDramaMovieList.map((e){
-
-                        return  "$imageAppendUrl${e.posterPath}";
-
+                      final _tensed = state.tenseDramaMovieList.map((e) {
+                        return "$imageAppendUrl${e.posterPath}";
                       }).toList();
-                      _tensed.shuffle();
+                      //_tensed.shuffle();
 
-
-                      final _southIndian = state.SouthIndianMovieList.map((e){
-
-                        return  "$imageAppendUrl${e.posterPath}";
-
+                      final _topshows = state.trendingTvList.map((e) {
+                        return "$imageAppendUrl${e.posterPath}";
                       }).toList();
-                      _southIndian.shuffle();
+                      //_top10.shuffle();
 
-                      final _top10 = state.trendingTvList.map((e){
-
-                        return  "$imageAppendUrl${e.posterPath}";
-
+                      final _southIndian = state.southIndianMovieList.map((e) {
+                        return "$imageAppendUrl${e.posterPath}";
                       }).toList();
-                      _top10.shuffle();
+                      //_southIndian.shuffle();
 
-                      
-
-                      
                       return ListView(
                         children: [
                           BackgroundCardWidget(),
                           RowHome(
                             divTitle: "Released in Past Years",
-                            posterList: _releasePastYear.sublist(0,10),
+                            posterList: _releasePastYear.sublist(0, 10),
                           ),
                           kHeight,
                           RowHome(
                             divTitle: "Trending Now",
-                            posterList: _trendingMovieList.sublist(0,10),
+                            posterList: _trendingMovieList.sublist(0, 10),
                           ),
                           kHeight,
-                          RowNumHome(posterList: _top10.sublist(0,10),),
+                          RowNumHome(
+                            posterList: _topshows.sublist(0, 10),
+                          ),
                           kHeight,
                           RowHome(
                             divTitle: "Tense Dramas",
-                            posterList: _tensed.sublist(0,10),
+                            posterList: _tensed.sublist(0, 10),
                           ),
                           kHeight,
                           RowHome(
                             divTitle: "South Indian Cinema",
-                            posterList: _southIndian.sublist(0,10),
+                            posterList: _southIndian.sublist(0, 10),
                           ),
                           kHeight,
                         ],
